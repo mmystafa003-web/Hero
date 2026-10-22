@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>من أنا؟</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#7c4dff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="من أنا؟">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#f4f1ff;--bg2:#e3f4ff;--card:rgba(255,255,255,.75);--tx:#1b1740;--mu:#6b6790;--ac:#7c4dff;--ac2:#00b8d9;--ok:#16a34a;--bad:#e11d48;--bd:rgba(124,77,255,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#120d2b;--bg2:#06263a;--card:rgba(255,255,255,.07);--tx:#f3f0ff;--mu:#a9a4d0;--ac:#9d7bff;--ac2:#22d3ee;--ok:#34d399;--bad:#fb7185;--bd:rgba(255,255,255,.12)}}
+:root[data-theme="dark"]{--bg1:#120d2b;--bg2:#06263a;--card:rgba(255,255,255,.07);--tx:#f3f0ff;--mu:#a9a4d0;--ac:#9d7bff;--ac2:#22d3ee;--ok:#34d399;--bad:#fb7185;--bd:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{min-height:100vh;font-family:Cairo,system-ui,sans-serif;color:var(--tx);background:linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed;padding:20px 16px 32px}
+.w{max-width:480px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:18px;backdrop-filter:blur(14px);margin-bottom:12px}
+h1{font-size:2.6rem;font-weight:900;text-align:center;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:18px}
+.sub{text-align:center;color:var(--mu);margin:6px 0 22px}
+.cat{display:flex;align-items:center;gap:14px;width:100%;padding:16px;margin-bottom:10px;border-radius:18px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:700 1.1rem Cairo,sans-serif;cursor:pointer;text-align:start;transition:transform .15s}
+.cat:active{transform:scale(.97)}
+.cat span.i{font-size:1.8rem}
+.cat small{display:block;color:var(--mu);font-weight:400;font-size:.8rem}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--mu);font-weight:700;margin-bottom:12px}
+.bar{height:6px;border-radius:9px;background:var(--bd);margin-bottom:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width .3s}
+.clue{padding:12px 14px;border-radius:14px;margin-bottom:8px;background:var(--bd);font-weight:700;animation:in .35s}
+.clue.lock{opacity:.4;text-align:center;font-weight:400}
+.clue b{color:var(--ac);margin-inline-end:8px}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pts{text-align:center;margin:6px 0 14px;color:var(--mu)}
+.pts b{color:var(--ac2);font-size:1.3rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.o{padding:14px 8px;border-radius:16px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:700 1rem Cairo,sans-serif;cursor:pointer;transition:transform .15s}
+.o:active{transform:scale(.96)}
+.o.ok{background:var(--ok);color:#fff;border-color:transparent}
+.o.bad{background:var(--bad);color:#fff;border-color:transparent;opacity:.55}
+.btn{display:block;width:100%;margin-top:14px;padding:14px;border:0;border-radius:16px;background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;font:900 1.05rem Cairo,sans-serif;cursor:pointer}
+.btn.g{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.big{font-size:4rem;font-weight:900;text-align:center}
+.c{text-align:center}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="w">
+<div id="home">
+<h1>من أنا؟ 🎭</h1>
+<p class="sub">المستوى صعب 🔥 تلميحات تنكشف شوي شوي، وكل ما خمّنت أبكر ربحت نقاط أكثر</p>
+<button class="cat" onclick="start('all')"><span class="i">🎲</span><div>الكل<small>خليط من كل الفئات</small></div></button>
+<button class="cat" onclick="start('toon')"><span class="i">📺</span><div>شخصيات سبيستون<small>معلومات دقيقة عن كونان وناروتو وغيرهم</small></div></button>
+<button class="cat" onclick="start('ar')"><span class="i">🎤</span><div>مطربين عرب<small>من الكلاسيك إلى النجوم</small></div></button>
+<button class="cat" onclick="start('fo')"><span class="i">🎧</span><div>مطربين أجانب<small>بوب، راب وأغاني الترند</small></div></button>
+</div>
+<div id="game" class="hide"></div>
+<div id="end" class="hide"></div>
+</div>
+<script>
+const D=[
+["toon","كونان",["أنا بالأصل محقق مراهق","تعرضت لتجربة دواء من منظمة سرية","أعيش في مكتب تحقيقات يملكه والد صديقتي","أستخدم ساعة مخدّرة وحذاء يضخّم الركلة"]],
+["toon","ناروتو",["والدي كان الهوكاجي الرابع","تعلمت تقنية الراسينغان","صديقي ساسكي وصديقتي ساكورا","معلمي كاكاشي"]],
+["toon","لوفي",["أخي بالتبني اسمه إيس","أكلت فاكهة الشيطان غوم غوم","طاقمي يسمى قراصنة القبعة القشية","سفينتي ثاوزند صني"]],
+["toon","غوكو",["اسمي الأصلي كاكاروت","ابني غوهان","خصمي الأزلي فيجيتا","أتحول إلى سوبر ساياجين"]],
+["toon","سالي",["مديرة المدرسة الصارمة اسمها مينتشن","أتخيل أن دميتي إميلي تتكلم","سكنت العلّية بعد وفاة والدي","الأميرة الصغيرة"]],
+["toon","هايدي",["خالتي ديتي نقلتني من الجبل","مدبرة المنزل الصارمة اسمها روتنماير","جدة صديقي بيتر ضريرة وتنتظرني","جدي يسمى عم الألب"]],
+["toon","ريمي",["مربيتي الأولى السيدة باربرين","بيعت لفنان متجول اسمه فيتاليس","معي الكلاب كابي وزيربينو ودولتشي","قردي اسمه جولي كور"]],
+["toon","كابتن ماجد",["علمني الكرة روبرتو البرازيلي","فريقي الأول في المدرسة نانكاتسو","لعبت في البرازيل ثم أوروبا","اسمي الياباني تسوباسا"]],
+["toon","دورايمون",["صاحبي نوبيتا يرسب كثيراً","لي أخت صغرى اسمها دورامي","أجهزتي: الباب السحري ومروحة الطيران","قط آلي يخاف الفئران"]],
+["toon","غرندايزر",["كوكبي فليد دمّره غزاة فيغا","أقيم في مزرعة قرب مركز أبحاث الفضاء","أرتبط بمركبة الصحن الطائر","أنا روبوت عملاق"]],
+["toon","ساسكي",["أبحث عن الانتقام لعائلتي","أخي الأكبر إيتاتشي","من قبيلة أوتشيها","أملك عيون الشارينغان"]],
+["ar","عمرو دياب",["ولدت في بورسعيد","بدأت بألبوم يا طريق","أغنيتي: تملي معاك","لقبي الهضبة"]],
+["ar","فيروز",["اسمي الحقيقي نهاد حداد","زوجي عاصي الرحباني","ابني زياد الرحباني","أغنيتي: سألوني الناس"]],
+["ar","أم كلثوم",["ولدت في قرية طماي الزهايرة","غنيت من كلمات أحمد رامي","ألحاني من رياض السنباطي","لقبي كوكب الشرق"]],
+["ar","كاظم الساهر",["ولدت في الموصل","أغنيتي: أنا وليلى","غنيت قصائد نزار قباني","لقبي القيصر"]],
+["ar","محمد عبده",["ولدت في الخرمة","أغنيتي: أبعاد","أغنيتي: الأماكن","لقبي فنان العرب"]],
+["ar","عبد الحليم حافظ",["ولدت في الحلوات بالشرقية","غنيت: قارئة الفنجان","مثلت فيلم الوسادة الخالية","لقبي العندليب الأسمر"]],
+["ar","محمد عبد الوهاب",["لحنت أغاني لأم كلثوم وغنيت أفلاماً","غنيت: الجندول","غنيت: من غير ليه","لقبي موسيقار الأجيال"]],
+["ar","ماجدة الرومي",["لبنانية","غنيت: كن صديقي","غنيت: كلمات","صوتي أوبرالي قوي"]],
+["fo","مايكل جاكسون",["بدأت مع فرقة إخوتي Jackson 5","ألبومي الأكثر مبيعاً Thriller","عشت في مزرعة نيفرلاند","ملك البوب"]],
+["fo","تيلور سويفت",["نشأت في بنسلفانيا وبدأت بالكانتري","ألبومي 1989","أغنيتي: Love Story","ألبوماتي Folklore وEvermore"]],
+["fo","إد شيران",["ألبومي ÷ (Divide)","أستخدم جهاز لووب على المسرح","أغنيتي: Thinking Out Loud","أغنيتي: Shape of You"]],
+["fo","ذا ويكند",["اسمي الحقيقي آبل تيسفاي","من مدينة تورنتو الكندية","ألبومي After Hours","أغنيتي: Starboy"]],
+["fo","بيلي آيليش",["ألبومي When We All Fall Asleep","أغنيتي: Ocean Eyes","غنيت للفيلم: What Was I Made For","أغنيتي: bad guy"]],
+["fo","ريانا",["اسمي الحقيقي روبن فينتي","ألبومي Anti","أغنيتي: Diamonds","أسست علامة Savage X Fenty"]],
+["fo","بروينو مارس",["اسمي الحقيقي بيتر جين هيرنانديز","ألبومي Doo-Wops & Hooligans","ثنائي Silk Sonic مع أندرسون باك","أغنيتي: Locked Out of Heaven"]],
+["fo","إمينيم",["ألبومي The Marshall Mathers LP","أغنيتي: Stan","فيلمي 8 Mile","من مدينة ديترويت"]],
+["fo","فريدي ميركوري",["ولدت في زنجبار","فرقتي Queen","أغنيتي: Bohemian Rhapsody","أشتهر بالشارب وسيطرة المسرح"]]
+];
+const $=id=>document.getElementById(id);
+const sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+let q=[],i=0,c=1,score=0,done=false,wr=[],cat='all';
+function show(id){['home','game','end'].forEach(x=>$(x).classList.toggle('hide',x!=id))}
+function start(k){cat=k;q=sh(D.filter(x=>k=='all'||x[0]==k)).slice(0,10);i=0;score=0;load();show('game')}
+function load(){c=1;wr=[];done=false;const x=q[i];x.o=sh([x[1],...sh(D.filter(y=>y[0]==x[0]&&y[1]!=x[1])).slice(0,3).map(y=>y[1])]);render()}
+function render(){
+const x=q[i];let h=`<div class="top"><span>السؤال ${i+1} من ${q.length}</span><span>⭐ ${score}</span></div><div class="bar"><i style="width:${i/q.length*100}%"></i></div><div class="card">`;
+for(let k=0;k<4;k++)h+=k<c?`<div class="clue"><b>${k+1}</b>${x[2][k]}</div>`:`<div class="clue lock">🔒 تلميح ${k+1}</div>`;
+h+=`</div><div class="pts">النقاط لو جاوبت صح الحين: <b>${done?0:5-c}</b></div><div class="opts">`;
+x.o.forEach(n=>{let cl='o';if(wr.includes(n))cl+=' bad';if(done&&n==x[1])cl+=' ok';h+=`<button class="${cl}" onclick="ans('${n}')">${n}</button>`});
+h+=`</div>`;
+if(!done&&c<4)h+=`<button class="btn g" onclick="hint()">💡 أعطني تلميح</button>`;
+if(done)h+=`<button class="btn" onclick="next()">${i+1<q.length?'السؤال التالي':'شوف النتيجة'}</button>`;
+$('game').innerHTML=h}
+function hint(){if(!done&&c<4){c++;render()}}
+function ans(n){const x=q[i];if(done||wr.includes(n))return;
+if(n==x[1]){score+=5-c;done=true}else{wr.push(n);if(c<4)c++;else done=true}
+render()}
+function next(){i++;if(i>=q.length)return fin();load()}
+function fin(){const m=q.length*4,p=score/m;
+const t=p>.8?['🏆','أسطورة!']:p>.55?['🔥','مستواك ممتاز']:p>.3?['👍','حلو، جرب مرة ثانية']:['😅','تحتاج تراجع معلوماتك'];
+$('end').innerHTML=`<div class="card c"><div class="big">${t[0]}</div><h1 style="margin-top:0;font-size:1.8rem">${t[1]}</h1><p class="sub">نتيجتك ${score} من ${m}</p><button class="btn" onclick="start('${cat}')">العب مرة ثانية</button><button class="btn g" onclick="show('home')">القائمة الرئيسية</button></div>`;show('end')}
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
